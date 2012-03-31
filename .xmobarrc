@@ -1,0 +1,19 @@
+Config { font = "-*-terminus-bold*-*-*-*-18-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Weather "KJFK" ["-t","<tempF>F","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %b %_d %Y %I:%M %p" "date" 10
+                    , Run Battery ["-t","Batt: <left>%","-L","20","-H","60","--low","red","--high","green"] 10
+--                  , Run Volume "%default:Master%"
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %wlan0% | <fc=#ee4000>%date%</fc>| %KJFK% | %battery%"
+       }

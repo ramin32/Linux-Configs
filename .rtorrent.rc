@@ -1,0 +1,5 @@
+schedule = watch_directory,5,5,load_start=~/downloads/*.torrent
+schedule = untied_directory,5,5,stop_untied=~/downloads/*.torrent
+
+directory = ~/downloads/
+session = ~/.session
