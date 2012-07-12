@@ -1,7 +1,8 @@
 feh --bg-scale ~/.background.jpg &
 xset s 600 &
 xset -b &
-xset +fp /usr/share/fonts/local 
-xset fp rehash 
-xrdb ~/.Xdefaults
-
+xset +fp /usr/share/fonts/local &
+xset fp rehash &
+xrdb ~/.Xdefaults &
+nm-applet &
+~/.dropbox-dist/dropboxd &
