@@ -13,3 +13,4 @@ set ut=500
 autocmd VimEnter * wincmd p
 set title
 set ai
+noremap <C-t> :CommandT<CR>
