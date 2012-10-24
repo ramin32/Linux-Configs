@@ -4,3 +4,4 @@ include "/usr/share/themes/MurrinaVerdeOlivo/gtk-2.0/gtkrc"
 include "/home/ramin/.gtkrc.mine"
 
 # -- THEME AUTO-WRITTEN DO NOT EDIT
+gtk-icon-theme-name = "Tango"

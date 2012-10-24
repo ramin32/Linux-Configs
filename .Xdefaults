@@ -39,7 +39,7 @@ xterm*color3:      #968a38
 xterm*color4:      #414171
 xterm*color5:      #963c59
 xterm*color6:      #418179
-xterm*color7:      #bebebe
+xterm*color7:      gray60
 xterm*color8:      #666666
 xterm*color9:      #cf6171
 xterm*color10:     #c5f779
