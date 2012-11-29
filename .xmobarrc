@@ -15,5 +15,5 @@ Config { font = "-*-terminus-bold*-*-*-*-18-*-*-*-*-*-*-*"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %wlan0% | <fc=#ee4000>%date%</fc>| %KJFK% | %battery%"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %wlan0% | <fc=#ee4000>%date%</fc>| %KJFK%"
        }

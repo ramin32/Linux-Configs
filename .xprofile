@@ -5,4 +5,5 @@ xset +fp /usr/share/fonts/local &
 xset fp rehash &
 xrdb ~/.Xdefaults &
 nm-applet &
-~/.dropbox-dist/dropboxd &
+autocutsel -f &
+~/.break_reminder.sh &
