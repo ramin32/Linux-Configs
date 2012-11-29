@@ -1,5 +1,5 @@
 while :
 do
-    gxmessage 'Break time!'
     sleep 20m
+    gxmessage 'Break time!'
 done
