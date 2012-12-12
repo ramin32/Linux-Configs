@@ -1,0 +1,6 @@
+[user]
+    name = Ramin Rakhamimov
+    email = ramin32@gmail.com
+[alias]
+    co = checkout
+    b = branch
