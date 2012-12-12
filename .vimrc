@@ -16,3 +16,4 @@ set ai
 noremap <C-t> :CommandT<CR>
 colorscheme darkblue
 set guifont=Menlo\ Bold:h18 
+source ~/.vim/plugin/matchit.vim
