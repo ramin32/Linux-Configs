@@ -2,5 +2,7 @@
     name = Ramin Rakhamimov
     email = ramin32@gmail.com
 [alias]
-    co = checkout
+    c = checkout
     b = branch
+    s = status
+    l = log

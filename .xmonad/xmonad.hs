@@ -188,6 +188,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_F2    ), spawn "gmrun")
     , ((modMask,               xK_z    ), spawn "xterm")
     , ((modMask,               xK_x    ), spawn "chromium-browser")
+    , ((modMask,               xK_f    ), spawn "firefox")
     , ((modMask,               xK_p    ), spawn "pcmanfm")
     , ((modMask .|. shiftMask, xK_z ), spawn "gnome-screensaver-command -l")
     , ((modMask .|. shiftMask, xK_p ), spawn "sudo poweroff")
