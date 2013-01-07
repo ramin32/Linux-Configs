@@ -43,7 +43,7 @@ import XMonad.Layout.ThreeColumns
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "xmobar"
+       hs <- mapM (spawnPipe . ("xmobar -x "++) . show) [0, 1]
        xmonad $ withUrgencyHook NoUrgencyHook
               $ defaultConfig
               { workspaces = workspaces'
@@ -53,7 +53,7 @@ main = do
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
               , keys = keys'
-              , logHook = logHook' h
+              , logHook = logHook' hs
               , layoutHook = smartBorders(layoutHook')
               , manageHook = manageHook'
               -- , startupHook = setWMName "LG3D"  -- Needed to make Java GUI apps work
@@ -85,8 +85,8 @@ myManageHook = composeAll $ concat
                    hide = [ ]
 
 
-logHook' :: Handle ->  X ()
-logHook' h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
+logHook' :: [Handle] ->  X ()
+logHook' hs = dynamicLogWithPP $ customPP { ppOutput = \s -> mapM_ (flip hPutStrLn s) hs }
 
 layoutHook' = customLayout
 
