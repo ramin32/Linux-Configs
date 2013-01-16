@@ -62,7 +62,7 @@ main = do
 -------------------------------------------------------------------------------
 -- Hooks --
 manageHook' :: ManageHook
-manageHook' = myManageHook <+> manageHook defaultConfig <+> manageDocks <+> (doF W.swapDown)
+manageHook' = myManageHook <+> manageHook defaultConfig <+> manageDocks 
 
 myManageHook = composeAll $ concat
              [ [ stringProperty "WM_WINDOW_ROLE" =? roleC --> doIgnore | roleC <- hide ]
