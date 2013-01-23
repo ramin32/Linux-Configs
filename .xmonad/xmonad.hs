@@ -43,7 +43,7 @@ import XMonad.Layout.ThreeColumns
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       hs <- mapM (spawnPipe . ("xmobar -x "++) . show) [0, 1]
+       hs <- mapM (spawnPipe . ("sleep 1s && xmobar -x "++) . show) [0, 1]
        xmonad $ withUrgencyHook NoUrgencyHook
               $ defaultConfig
               { workspaces = workspaces'
@@ -187,11 +187,12 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      ((modMask,               xK_p     ), spawn $ "exe=`" ++ myDmenuCmd ++ "` && eval \"exec $exe\"")
     , ((modMask,               xK_F2    ), spawn "gmrun")
     , ((modMask,               xK_z    ), spawn "xterm")
-    , ((modMask,               xK_x    ), spawn "chromium-browser")
+    , ((modMask,               xK_x    ), spawn "chromium || chromium-browser")
     , ((modMask,               xK_f    ), spawn "firefox")
     , ((modMask,               xK_p    ), spawn "pcmanfm")
-    , ((modMask .|. shiftMask, xK_z ), spawn "gnome-screensaver-command -l")
+    , ((modMask .|. shiftMask, xK_z ), spawn "slock")
     , ((modMask .|. shiftMask, xK_p ), spawn "sudo poweroff")
+    , ((modMask .|. shiftMask, xK_r ), spawn "sudo reboot")
     , ((modMask, xK_c     ), kill)
     --, ((modMask .|. shiftMask, xK_m     ), spawn "thunderbird")
     --, ((modMask,	       xK_f	), spawn "opera")

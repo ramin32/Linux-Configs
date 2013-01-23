@@ -1,10 +1,10 @@
-feh --bg-scale ~/.background.jpg &
-xset s 600 &
-xset -b &
-xset +fp /usr/share/fonts/local &
-xset fp rehash &
-xrdb ~/.Xdefaults &
-nm-applet &
-autocutsel -f &
-~/.break_reminder.sh &
-xrandr --output DVI-I-1 --mode 1920x1080 --output DVI-I-2 --mode 1440x900 --right-of DVI-I-1 &
+nitrogen --restore &
+xset s 600 
+xset -b 
+xset +fp /usr/share/fonts/local 
+xset fp rehash 
+xrdb ~/.Xdefaults 
+autocutsel -fork 
+autocutsel -selection PRIMARY -fork 
+#~/.break_reminder.sh 
+xrandr --output DVI-I-1 --mode 1920x1080 --output DVI-I-2 --mode 1440x900 --right-of DVI-I-1 

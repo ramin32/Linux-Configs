@@ -15,5 +15,5 @@ set title
 set ai
 noremap <C-t> :CommandT<CR>
 colorscheme darkblue
-set guifont=Menlo\ Bold:h18 
+set guifont=Terminus\ Bold\ 14 
 source ~/.vim/plugin/matchit.vim
