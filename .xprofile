@@ -9,3 +9,5 @@ autocutsel -selection PRIMARY -fork
 #~/.break_reminder.sh 
 xrandr --output DVI-I-1 --mode 1440x900 --pos 1920x170 --output DVI-I-2 --mode 1920x1080 --pos 0x0
 setxkbmap -option caps:none
+source ~/.profile
+

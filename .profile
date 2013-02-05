@@ -23,6 +23,6 @@ fi
 
 
 if [ -n "$DISPLAY" ]; then
-    BROWSER=chromium
+    export BROWSER=chromium
 fi
-EDITOR=vim
+export EDITOR=vim
