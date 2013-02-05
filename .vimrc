@@ -17,3 +17,4 @@ noremap <C-t> :CommandT<CR>
 colorscheme darkblue
 set guifont=Terminus\ Bold\ 14 
 source ~/.vim/plugin/matchit.vim
+setlocal spell spelllang=en_us 
