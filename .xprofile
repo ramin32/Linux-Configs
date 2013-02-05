@@ -1,4 +1,4 @@
-nitrogen --restore &
+#nitrogen --restore &
 xset s 600 
 xset -b 
 xset +fp /usr/share/fonts/local 

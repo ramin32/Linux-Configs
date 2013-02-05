@@ -16,4 +16,4 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 ~/.xprofile 
-exec xmonad
+exec awesome
