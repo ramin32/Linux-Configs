@@ -9,6 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+local vicious = require("vicious")
 local menubar = require("menubar")
 
 -- {{{ Error handling
@@ -110,7 +111,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock(" %b %a %d, %I:%M %p")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -219,12 +220,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
+            --if client.focus then client.focus:raise() end
         end),
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
+            --if client.focus then client.focus:raise() end
         end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
@@ -246,6 +247,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "x", function () awful.util.spawn("chromium") end),
     awful.key({ modkey,           }, "s", function () awful.util.spawn("spacefm") end),
+    awful.key({ modkey, "Shift"  }, "p", function () awful.util.spawn("sudo poweroff") end),
     awful.key({ modkey,           }, "q", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -327,7 +329,7 @@ for i = 1, keynumber do
 end
 
 clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+    awful.button({ }, 1, function (c) client.focus = c end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
@@ -345,16 +347,11 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      size_hints_honor = false,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { instance = "exe" },
-      properties = { floating = true } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
+                     buttons = clientbuttons },
+     callback = awful.client.setslave,
+                 
+                 },
+        -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
 }
