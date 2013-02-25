@@ -6,5 +6,3 @@
     b = branch
     s = status
     l = log
-[push]
-	default = simple

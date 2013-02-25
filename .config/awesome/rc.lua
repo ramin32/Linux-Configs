@@ -245,7 +245,8 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "x", function () awful.util.spawn("chromium") end),
+    awful.key({ modkey, "Shift"   }, "z", function () awful.util.spawn("slock") end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn("chromium-browser") end),
     awful.key({ modkey,           }, "s", function () awful.util.spawn("spacefm") end),
     awful.key({ modkey, "Shift"  }, "p", function () awful.util.spawn("sudo poweroff") end),
     awful.key({ modkey,           }, "q", awesome.restart),
