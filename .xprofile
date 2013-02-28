@@ -1,14 +1,10 @@
-#nitrogen --restore &
 xset s 600 
 xset -b 
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
 xrdb ~/.Xdefaults 
-#autocutsel -fork 
-#autocutsel -selection PRIMARY -fork 
 #~/.break_reminder.sh 
-xrandr --output DVI-I-1 --mode 1440x900 --pos 1920x170 --output DVI-I-2 --mode 1920x1080 --pos 0x0
+xrandr --output DVI-I-1 --mode 1920x1080 --output DVI-I-2 --mode 1440x900 --pos 1920x168
 setxkbmap -option caps:none
 source ~/.profile
-fix_clock &
-
+feh --bg-scale ~/.backgrounds/.background_1.jpg

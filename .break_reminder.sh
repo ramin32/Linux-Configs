@@ -1,5 +1,5 @@
 while :
 do
     sleep 20m
-    gxmessage 'Break time!'
+    gxmessage 'FIX YOUR POSTURE!!!\nBreak time!'
 done
