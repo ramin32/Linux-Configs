@@ -6,3 +6,4 @@
     b = branch
     s = status
     l = log
+    p = push origin master

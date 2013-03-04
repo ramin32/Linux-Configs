@@ -229,7 +229,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Shift"   }, "z", function () awful.util.spawn("slock") end),
     awful.key({ modkey,           }, "x", function () awful.util.spawn("chromium-browser") end),
-    awful.key({ modkey,           }, "s", function () awful.util.spawn("spacefm") end),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("nautilus --no-desktop") end),
     awful.key({ modkey, "Shift"  }, "p", function () awful.util.spawn("sudo poweroff") end),
     awful.key({ modkey,           }, "q", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -323,18 +323,13 @@ awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
-                     border_height = beautiful.border_height,
                      border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
+                     focus = true,
                      size_hints_honor = false,
                      keys = clientkeys,
-                     buttons = clientbuttons },
-     callback = awful.client.setslave,
-                 
-                 },
-        -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+                     buttons = clientbuttons }},
+   { rule = { instance = "exe" },
+        properties = { floating = true } },
 }
 -- }}}
 
@@ -368,3 +363,4 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--
