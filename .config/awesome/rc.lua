@@ -347,7 +347,7 @@ awful.rules.rules = {
                      size_hints_honor = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "exe" },
+    { rule = { class = "Exe" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
