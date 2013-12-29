@@ -10,10 +10,10 @@ Config { font = "-*-terminus-bold*-*-*-*-18-*-*-*-*-*-*-*"
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %Y %I:%M %p" "date" 10
                     , Run Battery ["-t","Batt: <left>%","-L","20","-H","60","--low","red","--high","green"] 10
---                  , Run Volume "%default:Master%"
+
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %wlp4s0% | <fc=#00ff00>Sit Straight! </fc>| <fc=#ee4000>%date%</fc>| %KJFK%"
+       , template = "%StdinReader% }{ %cpu% | %memory% | Gmail: %gmail% | <fc=#00ff00>Sit Straight! </fc>| <fc=#ee4000>%date%</fc>| %KJFK%"
        }
