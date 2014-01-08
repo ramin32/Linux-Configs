@@ -17,4 +17,3 @@ fi
 # ...or the Window Manager of your choice
 ~/.xprofile 
 exec awesome -c ~/.config/awesome/rc.lua
-touch ~/xinitrc_ran
