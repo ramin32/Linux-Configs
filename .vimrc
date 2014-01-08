@@ -20,3 +20,6 @@ source ~/.vim/plugin/matchit.vim
 set hls
 imap <D-V> ^O"+p
 set wildignore+=*.o,*.obj,.git,*.png,*.gif,*.jpg,*.jpeg
+let NERDTreeIgnore = ['\.pyc$']
+set wildignore+=*.o,*.obj,.git,ENV
+set backspace=2

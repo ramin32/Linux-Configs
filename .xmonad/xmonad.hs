@@ -189,37 +189,22 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_z    ), spawn "xterm")
     , ((modMask,               xK_x    ), spawn "chromium || chromium-browser")
     , ((modMask,               xK_f    ), spawn "firefox")
-    , ((modMask,               xK_s    ), spawn "spacefm")
+    , ((modMask,               xK_p    ), spawn "pcmanfm")
     , ((modMask .|. shiftMask, xK_z ), spawn "slock")
     , ((modMask .|. shiftMask, xK_p ), spawn "sudo poweroff")
     , ((modMask .|. shiftMask, xK_r ), spawn "sudo reboot")
     , ((modMask, xK_c     ), kill)
-    --, ((modMask .|. shiftMask, xK_m     ), spawn "thunderbird")
-    --, ((modMask,	       xK_f	), spawn "opera")
-    --, ((modMask .|. shiftMask, xK_p	), spawn "pidgin")
-    --, ((modMask,	       xK_o	), spawn "opera")
-    --, ((modMask,               xK_w     ), spawn "/usr/lib/wicd/gui.py")
-    --, ((modMask,               xK_e     ), spawn "urxvtc -e emacs -nw")
- -- multimedia keys
-   --
-   -- XF86AudioLowerVolume
    , ((0            , 0x1008ff11), spawn "amixer set PCM 2-")
-   -- XF86AudioRaiseVolume
    , ((0            , 0x1008ff13), spawn "amixer set PCM 2+")
-   -- XF86AudioMute
    , ((0            , 0x1008ff12), spawn "amixer set Master toggle")
-    -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
     , ((modMask,               xK_b     ), sendMessage ToggleStruts)
 
-    -- floating layer stuff
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
 
-    -- refresh
     , ((modMask,               xK_n     ), refresh)
 
-    -- focus
     , ((modMask,               xK_Tab   ), windows W.focusDown)
     , ((modMask,               xK_j     ), windows W.focusDown)
     , ((modMask,               xK_k     ), windows W.focusUp)

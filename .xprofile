@@ -5,4 +5,4 @@ setxkbmap -option caps:none
 source ~/.profile
 feh --bg-scale ~/.backgrounds/.background_1.jpg
 
-xrandr --output DVI-I-0 --pos 1920x180
+#sleep 5s && xrandr --output DVI-D-0 --mode 1920x1080 --pos 1440x-20 --output DVI-I-0 --mode 1440x900&
