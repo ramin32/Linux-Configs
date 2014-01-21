@@ -16,4 +16,6 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 ~/.xprofile 
-exec awesome -c ~/.config/awesome/rc.lua
+#exec startkde
+#exec gnome-session
+exec bspwm 

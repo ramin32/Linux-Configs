@@ -187,7 +187,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      ((modMask,               xK_p     ), spawn $ "exe=`" ++ myDmenuCmd ++ "` && eval \"exec $exe\"")
     , ((modMask,               xK_F2    ), spawn "gmrun")
     , ((modMask,               xK_z    ), spawn "xterm")
-    , ((modMask,               xK_x    ), spawn "chromium || chromium-browser")
+    , ((modMask,               xK_x    ), spawn "google-chrome || chromium || chromium-browser")
     , ((modMask,               xK_f    ), spawn "firefox")
     , ((modMask,               xK_p    ), spawn "pcmanfm")
     , ((modMask .|. shiftMask, xK_z ), spawn "slock")

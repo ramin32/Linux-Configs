@@ -21,5 +21,5 @@ set hls
 imap <D-V> ^O"+p
 set wildignore+=*.o,*.obj,.git,*.png,*.gif,*.jpg,*.jpeg
 let NERDTreeIgnore = ['\.pyc$']
-set wildignore+=*.o,*.obj,.git,ENV
+set wildignore+=*.o,*.obj,.git
 set backspace=2

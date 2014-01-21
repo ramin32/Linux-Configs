@@ -20,9 +20,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-
-if [ -n "$DISPLAY" ]; then
-    export BROWSER=chromium
-fi
-export EDITOR=vim
