@@ -7,10 +7,6 @@
     s = status
     l = log
     p = push origin master
-[log]
-      date = relative
-[format]
-      pretty = format:%H %an %ad
 [color]
 	diff = auto
 [push]

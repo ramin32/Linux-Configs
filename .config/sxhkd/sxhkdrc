@@ -3,7 +3,7 @@
 #
 
 alt + shift + q
-    bspc quit
+    pkill -x panel; bspc quit
 
 alt + c
     bspc window -c
@@ -87,7 +87,10 @@ alt + x
     google-chrome
 
 alt + space
-    dmenu_run
+    gmrun
+
+alt + shift + p
+    sudo poweroff
 
 # make sxhkd reload its configuration files:
 alt + q
