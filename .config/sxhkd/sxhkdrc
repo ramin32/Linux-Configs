@@ -86,11 +86,14 @@ alt + z
 alt + x
     google-chrome
 
-alt + space
+alt + F2
     gmrun
 
 alt + shift + p
     sudo poweroff
+
+alt + p
+    nautilus --no-desktop
 
 # make sxhkd reload its configuration files:
 alt + q
