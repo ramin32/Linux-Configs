@@ -181,9 +181,6 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Absolute0";
-    user_name = "Absolute0";
-    nick = "Absolute0";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "crap"; };

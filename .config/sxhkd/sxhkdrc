@@ -84,7 +84,7 @@ alt + z
     xterm
 
 alt + x
-    google-chrome
+    google-chrome || chromium
 
 alt + F2
     gmrun
