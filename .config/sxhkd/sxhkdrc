@@ -15,7 +15,7 @@ alt + b
     bspc desktop -B
 
 alt + {s,f}
-    bspc window -t {floating,fullscreen}
+    bspc window -t floating
 
 alt + {grave,Tab}
     bspc {window,desktop} -f last
@@ -91,6 +91,9 @@ alt + F2
 
 alt + shift + p
     sudo poweroff
+
+alt + shift + z
+    slock
 
 alt + p
     nautilus --no-desktop
