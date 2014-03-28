@@ -55,7 +55,7 @@ alt + ctrl + {_,shift + }space
 alt + {h,j,k,l}
     bspc window -e {left -10,down +10,up -10,right +10}
 
-alt +  shift + {h,j,k,ps}
+alt +  shift + {h,j,k,l}
     bspc window -e {right -10,up +10,down -10,left +10}
 
 alt + ctrl + {1-9}
@@ -84,7 +84,7 @@ alt + z
     xterm
 
 alt + x
-    google-chrome || chromium
+    google-chrome || chromium || chromium-browser
 
 alt + F2
     gmrun
@@ -96,7 +96,7 @@ alt + shift + z
     slock
 
 alt + p
-    nautilus --no-desktop
+    nautilus --no-desktop || dolphin || pcmanfm
 
 # make sxhkd reload its configuration files:
 alt + q

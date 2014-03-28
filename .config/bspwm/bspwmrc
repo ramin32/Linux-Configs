@@ -10,12 +10,11 @@ bspc config window_gap 0
 bspc config wm_name LG3D
 
 #bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a Gimp follow=on floating=on
 #bspc rule -a Chromium desktop=^2
 bspc rule -a mplayer2 floating=on
 
 sxhkd &
 export PANEL_FIFO=/tmp/panel-fifo
-export PANEL_HEIGHT=24
 export PATH=$PATH:/home/ramin/.config/panel/
 panel &
-
