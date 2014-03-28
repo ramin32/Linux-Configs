@@ -1,0 +1,9 @@
+#/bin/sh
+
+URL='http://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/4095_pc'
+
+while :
+do
+    wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print "W" $2 ": "$16", "$12"°" }'| head -1 
+    sleep 5m
+done

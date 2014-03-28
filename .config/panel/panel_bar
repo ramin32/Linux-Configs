@@ -6,11 +6,16 @@ while read -r line ; do
 	case $line in
 		S*)
 			# clock output
-			sys_infos="${line#?}"
+			clock="${line#?}"
 			;;
+                W*)
+			# clock output
+			weather="${line#?}"
+			;;
+
 		T*)
 			# xtitle output
-			title="%{F#00FFFF}${line#?}%{F-}"
+			title="%{Fgreen}${line#?}%{F-}"
 			;;
 		W*)
 			# bspwm internal state
@@ -55,5 +60,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}$wm_infos %{c}$title %{r}$sys_infos"
+	printf "%s\n" "%{l}$wm_infos %{c}$title %{r} $weather | %{Fcyan}$clock"
 done
