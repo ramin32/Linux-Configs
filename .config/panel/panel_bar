@@ -1,7 +1,3 @@
-#! /bin/sh
-#
-# Example panel for LemonBoy's bar
-
 while read -r line ; do
 	case $line in
 		S*)
@@ -25,32 +21,31 @@ while read -r line ; do
 				case $item in
 					O*)
 						# focused occupied desktop
-						wm_infos="$wm_infos %{F#AA0000}${name}%{F-}"
+						wm_infos="$wm_infos %{Fcyan}${name}%{F-}"
 						;;
 					F*)
 						# focused free desktop
-						wm_infos="$wm_infos ${name}%{F-}"
+						wm_infos="$wm_infos %{Fcyan} ${name}%{F-}"
 						;;
 					U*)
 						# focused urgent desktop
-						wm_infos="$wm_infos ${name}"
+						wm_infos="$wm_infos %{Fcyan} ${name}%{F-}"
 						;;
 					o*)
 						# occupied desktop
-						wm_infos="$wm_infos ${name}"
+						wm_infos="$wm_infos %{Forange}${name}%{F-}"
 						;;
 					f*)
 						# free desktop
-						wm_infos="$wm_infos ${name}"
+						wm_infos="$wm_infos %{Fwhite}${name}%{F-}"
 						;;
 					u*)
 						# urgent desktop
-						wm_infos="$wm_infos ${name}"
+						wm_infos="$wm_infos %{Fyellow}${name}%{F-}"
 						;;
 					L*)
 						# layout
-						layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
-						wm_infos="$wm_infos   %{Fgreen}$layout%{F-}"
+						wm_infos="$wm_infos %{Fgreen}${name}%{F-}"
 						;;
 				esac
 				shift

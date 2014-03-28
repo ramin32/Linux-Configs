@@ -3,7 +3,7 @@ xset -b
 xrdb ~/.Xdefaults 
 setxkbmap -option caps:none
 source ~/.profile
-feh --bg-scale ~/.backgrounds/.background_1.jpg
+feh --bg-scale ~/.background.jpg
 xsef +fp /usr/share/fonts/X11/misc
 xset fp rehash
 

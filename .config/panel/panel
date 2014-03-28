@@ -1,7 +1,7 @@
 #! /bin/sh
 FONT_FAMILY='-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*'
 FONT_SIZE=16
-export PANEL_HEIGHT=20
+export PANEL_HEIGHT=16
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then
 	printf "%s\n" "The panel is already running." >&2

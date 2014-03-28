@@ -47,7 +47,6 @@ fi
 function virtual_env_prompt () {
     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
 }
-grml_theme_add_token  virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
 zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host path vcs percent
 
 ## ZLE tweaks ##
@@ -59,7 +58,6 @@ zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host p
 #bindkey -M menuselect 'j' vi-down-line-or-history # bottom
 
 ## set command prediction from history, see 'man 1 zshcontrib'
-is4 && zrcautoload predict-on && \
 zle -N predict-on         && \
 zle -N predict-off        && \
 bindkey "^X^Z" predict-on && \
