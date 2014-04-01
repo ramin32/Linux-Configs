@@ -1,0 +1,7 @@
+#/bin/sh
+
+while :
+do
+    echo Y$(curl -s 'http://download.finance.yahoo.com/d/quotes.csv?s=sne&f=l1'|sed -e "s///g")
+    sleep 5m
+done

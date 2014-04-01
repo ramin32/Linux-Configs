@@ -21,6 +21,7 @@ bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S%a %b %e %Y %r' > "$PANEL_FIFO" &
 fetch_weather > "$PANEL_FIFO" &
+fetch_sne_stock > "$PANEL_FIFO" &
 
 case "$flavor" in
 	bar)

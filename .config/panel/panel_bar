@@ -3,6 +3,9 @@ while read -r line ; do
 		S*)
 			clock="${line#?}"
 			;;
+                Y*)
+                        sne="${line#?}"
+                        ;;
                 A*)
 			weather="${line#?}"
 			;;
@@ -25,11 +28,11 @@ while read -r line ; do
 						;;
 					F*)
 						# focused free desktop
-						wm_infos="$wm_infos %{Fcyan} ${name}%{F-}"
+						wm_infos="$wm_infos %{Fcyan}${name}%{F-}"
 						;;
 					U*)
 						# focused urgent desktop
-						wm_infos="$wm_infos %{Fcyan} ${name}%{F-}"
+						wm_infos="$wm_infos %{Fcyan}${name}%{F-}"
 						;;
 					o*)
 						# occupied desktop
@@ -52,5 +55,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}$wm_infos %{c}$title %{r} $clock | %{Fcyan}$weather"
+	printf "%s\n" "%{l}$wm_infos %{c}$title %{r} $clock | %{Fcyan}$weather | %{Fgreen}SNE: $sne"
 done
