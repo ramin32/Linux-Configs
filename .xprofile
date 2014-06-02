@@ -1,3 +1,4 @@
+#xrandr --output DVI-D-0 --rotate left --output DVI-I-1 --pos 0x150 --primary &
 xset s 600 
 xset -b 
 xrdb ~/.Xdefaults 
@@ -6,6 +7,6 @@ source ~/.profile
 feh --bg-scale ~/.background.jpg
 xsef +fp /usr/share/fonts/X11/misc
 xset fp rehash
-
-#sleep 5s && xrandr --output DVI-D-0 --mode 1920x1080 --pos 1440x-20 --output DVI-I-0 --mode 1440x900&
+xscreensaver -no-splash &
+compton &
 

@@ -1,6 +1,6 @@
 while read -r line ; do
 	case $line in
-		S*)
+                S*)
 			clock="${line#?}"
 			;;
                 Y*)
@@ -55,5 +55,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}$wm_infos %{c}$title %{r} $clock | %{Fcyan}$weather | %{Fgreen}SNE: $sne"
+	printf "%s\n" "%{l}$wm_infos %{c}$title %{r} $clock | %{Fcyan}$weather %{Fwhite}| %{Forange}Sit Straight! %{Fwhite}| %{Fgreen}SNE: $sne"
 done

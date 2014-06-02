@@ -15,7 +15,7 @@ flavor=${1:-bar}
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc config top_padding $PANEL_HEIGHT
+bspc config -m ^1 top_padding $PANEL_HEIGHT
 
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
@@ -25,7 +25,7 @@ fetch_sne_stock > "$PANEL_FIFO" &
 
 case "$flavor" in
 	bar)
-		cat "$PANEL_FIFO" | panel_bar | bar -f "$FONT_FAMILY" &
+		cat "$PANEL_FIFO" | panel_bar | bar -f "$FONT_FAMILY" -g 1920x16+0+0 &
 		;;
 	dzen2)
 		. panel_colors
