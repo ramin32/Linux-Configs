@@ -22,6 +22,7 @@
 :CommandTBuffer	command-t.txt	/*:CommandTBuffer*
 :CommandTFlush	command-t.txt	/*:CommandTFlush*
 :CommandTJumps	command-t.txt	/*:CommandTJumps*
+:CommandTMRU	command-t.txt	/*:CommandTMRU*
 :CommandTTag	command-t.txt	/*:CommandTTag*
 :MatchDebug	matchit.txt	/*:MatchDebug*
 :NERDTree	NERD_tree.txt	/*:NERDTree*
@@ -111,6 +112,7 @@ command-t-commands	command-t.txt	/*command-t-commands*
 command-t-contents	command-t.txt	/*command-t-contents*
 command-t-development	command-t.txt	/*command-t-development*
 command-t-donations	command-t.txt	/*command-t-donations*
+command-t-faq	command-t.txt	/*command-t-faq*
 command-t-history	command-t.txt	/*command-t-history*
 command-t-installation	command-t.txt	/*command-t-installation*
 command-t-intro	command-t.txt	/*command-t-intro*
@@ -119,6 +121,7 @@ command-t-mappings	command-t.txt	/*command-t-mappings*
 command-t-options	command-t.txt	/*command-t-options*
 command-t-pathogen	command-t.txt	/*command-t-pathogen*
 command-t-requirements	command-t.txt	/*command-t-requirements*
+command-t-tips	command-t.txt	/*command-t-tips*
 command-t-trouble-shooting	command-t.txt	/*command-t-trouble-shooting*
 command-t-usage	command-t.txt	/*command-t-usage*
 command-t-website	command-t.txt	/*command-t-website*
@@ -138,7 +141,9 @@ g:CommandTCursorLeftMap	command-t.txt	/*g:CommandTCursorLeftMap*
 g:CommandTCursorRightMap	command-t.txt	/*g:CommandTCursorRightMap*
 g:CommandTCursorStartMap	command-t.txt	/*g:CommandTCursorStartMap*
 g:CommandTDeleteMap	command-t.txt	/*g:CommandTDeleteMap*
+g:CommandTFileScanner	command-t.txt	/*g:CommandTFileScanner*
 g:CommandTHighlightColor	command-t.txt	/*g:CommandTHighlightColor*
+g:CommandTInputDebounce	command-t.txt	/*g:CommandTInputDebounce*
 g:CommandTMatchWindowAtTop	command-t.txt	/*g:CommandTMatchWindowAtTop*
 g:CommandTMatchWindowReverse	command-t.txt	/*g:CommandTMatchWindowReverse*
 g:CommandTMaxCachedDirectories	command-t.txt	/*g:CommandTMaxCachedDirectories*

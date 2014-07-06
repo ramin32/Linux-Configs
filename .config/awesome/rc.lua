@@ -67,7 +67,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
-mytextclock = awful.widget.textclock({ align = "right"}, " %a %b %d %I:%M %p")
+mytextclock = awful.widget.textclock({ align = "right"}, " %a %b %d %I:%M %p ")
 
 mysystray = widget({ type = "systray" })
 
@@ -197,6 +197,9 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",  function (c) 
         c.ontop = not c.ontop
         awful.client.floating.toggle()
+    end),
+    awful.key({ modkey }, "b", function ()
+        mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
     end),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
