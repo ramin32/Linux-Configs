@@ -148,6 +148,10 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 globalkeys = awful.util.table.join(
+    -- volume
+    awful.key({}, 'XF86AudioMute', function () awful.util.spawn("amixer -D pulse sset Master 1+ toggle") end), 
+    awful.key({}, 'XF86AudioRaiseVolume', function () awful.util.spawn("amixer -D pulse sset Master 5%+") end),
+    awful.key({}, 'XF86AudioLowerVolume', function () awful.util.spawn("amixer -D pulse sset Master 5%-") end),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     awful.key({ modkey,           }, "j",
         function ()
@@ -173,7 +177,8 @@ globalkeys = awful.util.table.join(
             end
         end),
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome') end),
+    --awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome --proxy-server=socks5://localhost:12345') end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome ') end),
     awful.key({ modkey,    }, "p", function () awful.util.spawn('nautilus --no-desktop') end),
     awful.key({ modkey, "Shift"   }, "p", function () awful.util.spawn('sudo poweroff') end),
     awful.key({ modkey, "Shift"   }, "z", function () awful.util.spawn('slock') end),
