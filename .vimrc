@@ -2,6 +2,7 @@ set nocompatible
 set nu
 set mouse=a
 syntax on
+filetype on
 filetype plugin indent on
 set et
 set sts=4
