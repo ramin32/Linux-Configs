@@ -23,7 +23,7 @@ URxvt*scrollBar: false
 URxvt.scrollBar: false
 URxvt.loginShell: true
 URxvt.urgentOnBell: true
-URxvt.urlLauncher: /usr/bin/chromium
+URxvt.urlLauncher: /usr/bin/chromium-browser
 URxvt.matcher.button: 1
 URxvt.tripleclickwords: true
 URxvt.perl-ext-common: default,matcher
@@ -53,7 +53,7 @@ xterm*scrollBar: false
 xterm.scrollBar: false
 xterm.loginShell: true
 xterm.urgentOnBell: true
-xterm.urlLauncher: /usr/bin/chromium
+xterm.urlLauncher: /usr/bin/chromium-browser
 xterm.matcher.button: 1
 xterm.tripleclickwords: true
 xterm.perl-ext-common: default,matcher

@@ -20,5 +20,7 @@ fi
 #exec gnome-session
 
 #xrandr --output DVI-I-1 --rotate left --output DVI-D-0 --rotate left --pos 1080x0 &
+google-chrome &
+urxvt &
 exec awesome 
 

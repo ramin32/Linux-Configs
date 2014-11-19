@@ -22,7 +22,9 @@ set guifont=Terminus\ Bold\ 14
 source ~/.vim/plugin/matchit.vim
 set hls
 imap <D-V> ^O"+p
-set wildignore+=*.o,*.obj,.git
+set wildignore+=*.o,*.obj,.git,ENV/**
+let g:CommandTWildIgnore="*.o,*.obj,.git,*.pyc,**/ENV/**"
 let NERDTreeIgnore = ['\.pyc$']
 set backspace=2
 set autoread
+setlocal spell spelllang=en_us

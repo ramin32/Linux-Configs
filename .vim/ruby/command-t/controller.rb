@@ -1,25 +1,5 @@
-# Copyright 2010-2014 Wincent Colaiuta. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#
-# 1. Redistributions of source code must retain the above copyright notice,
-#    this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright notice,
-#    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
+# Copyright 2010-2014 Greg Hurrell. All rights reserved.
+# Licensed under the terms of the BSD 2-clause license.
 
 require 'command-t/finder/buffer_finder'
 require 'command-t/finder/jump_finder'
@@ -65,7 +45,21 @@ module CommandT
 
     def show_file_finder
       # optional parameter will be desired starting directory, or ""
-      @path             = File.expand_path(::VIM::evaluate('a:arg'), VIM::pwd)
+
+      arg = ::VIM::evaluate('a:arg')
+      if arg && arg.size > 0
+        @path = File.expand_path(arg, VIM::pwd)
+      else
+        traverse = get_string('g:CommandTTraverseSCM') || 'file'
+        case traverse
+        when 'file'
+          @path = nearest_ancestor(VIM::current_file_dir, scm_markers)
+        when 'dir'
+          @path = nearest_ancestor(VIM::pwd, scm_markers)
+        end
+      end
+
+      @path             = VIM::pwd unless @path
       @active_finder    = file_finder
       file_finder.path  = @path
       show
@@ -75,7 +69,7 @@ module CommandT
     end
 
     def hide
-      @match_window.close
+      @match_window.leave
       if VIM::Window.select @initial_window
         if @initial_buffer.number == 0
           # upstream bug: buffer number misreported as 0
@@ -165,6 +159,11 @@ module CommandT
       list_matches!
     end
 
+    def clear_prev_word
+      @prompt.clear_prev_word!
+      list_matches!
+    end
+
     def cursor_left
       @prompt.cursor_left if @focus == @prompt
     end
@@ -194,15 +193,35 @@ module CommandT
 
       @matches = @active_finder.sorted_matches_for(
         @prompt.abbrev,
-        :limit   => match_limit,
-        :threads => CommandT::Util.processor_count
+        :case_sensitive => case_sensitive?,
+        :limit          => match_limit,
+        :threads        => CommandT::Util.processor_count
       )
       @match_window.matches = @matches
 
       @needs_update = false
     end
 
+    def tab_command
+      get_string('g:CommandTAcceptSelectionTabCommand') || 'tabe'
+    end
+
+    def split_command
+      get_string('g:CommandTAcceptSelectionSplitCommand') || 'sp'
+    end
+
+    def vsplit_command
+      get_string('g:CommandTAcceptSelectionVSplitCommand') || 'vs'
+    end
+
   private
+
+    def scm_markers
+      markers = get_string('g:CommandTSCMDirectories')
+      markers = markers && markers.split(/\s*,\s*/)
+      markers = %w[.git .hg .svn .bzr _darcs] unless markers && markers.length
+      markers
+    end
 
     def list_matches!
       list_matches(:force => true)
@@ -237,6 +256,26 @@ module CommandT
       end
     end
 
+    def case_sensitive?
+      if @prompt.abbrev.match(/[A-Z]/)
+        if VIM::exists?('g:CommandTSmartCase')
+          smart_case = get_bool('g:CommandTSmartCase')
+        else
+          smart_case = get_bool('&smartcase')
+        end
+
+        if smart_case
+          return true
+        end
+      end
+
+      if VIM::exists?('g:CommandTIgnoreCase')
+        return !get_bool('g:CommandTIgnoreCase')
+      end
+
+      false
+    end
+
     def get_number(name, default = nil)
       VIM::exists?(name) ? ::VIM::evaluate("#{name}").to_i : default
     end
@@ -268,10 +307,12 @@ module CommandT
     end
 
     def default_open_command
-      if !get_bool('&hidden') && get_bool('&modified')
-        'sp'
+      if !get_bool('&modified') ||
+        get_bool('&hidden') ||
+        get_bool('&autowriteall') && !get_bool('&readonly')
+        get_string('g:CommandTAcceptSelectionCommand') || 'e'
       else
-        'e'
+        'sp'
       end
     end
 
@@ -334,6 +375,7 @@ module CommandT
         'Backspace'             => '<BS>',
         'Cancel'                => ['<C-c>', '<Esc>'],
         'Clear'                 => '<C-u>',
+        'ClearPrevWord'         => '<C-w>',
         'CursorEnd'             => '<C-e>',
         'CursorLeft'            => ['<Left>', '<C-h>'],
         'CursorRight'           => ['<Right>', '<C-l>'],
@@ -366,11 +408,14 @@ module CommandT
       ::VIM::command 'augroup END'
     end
 
-    # Returns the desired maximum number of matches, based on available
-    # vertical space and the g:CommandTMaxHeight option.
+    # Returns the desired maximum number of matches, based on available vertical
+    # space and the g:CommandTMaxHeight option.
+    #
+    # Note the "available" space is actually a theoretical upper bound; it takes
+    # into account screen dimensions but not things like existing splits which
+    # may reduce the amount of space in practice.
     def match_limit
-      limit = VIM::Screen.lines - 5
-      limit = 1 if limit < 0
+      limit = [1, VIM::Screen.lines - 5].max
       limit = [limit, max_height].min if max_height > 0
       limit
     end

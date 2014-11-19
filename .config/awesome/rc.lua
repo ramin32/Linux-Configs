@@ -178,7 +178,7 @@ globalkeys = awful.util.table.join(
         end),
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
     --awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome --proxy-server=socks5://localhost:12345') end),
-    awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome ') end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome') end),
     awful.key({ modkey,    }, "p", function () awful.util.spawn('nautilus --no-desktop') end),
     awful.key({ modkey, "Shift"   }, "p", function () awful.util.spawn('sudo poweroff') end),
     awful.key({ modkey, "Shift"   }, "z", function () awful.util.spawn('slock') end),

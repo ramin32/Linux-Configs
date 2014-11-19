@@ -1,25 +1,5 @@
-# Copyright 2010-2014 Wincent Colaiuta. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#
-# 1. Redistributions of source code must retain the above copyright notice,
-#    this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright notice,
-#    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
+# Copyright 2010-2014 Greg Hurrell. All rights reserved.
+# Licensed under the terms of the BSD 2-clause license.
 
 require 'ostruct'
 require 'command-t/settings'
@@ -40,11 +20,12 @@ module CommandT
       @reverse_list    = options[:match_window_reverse]
 
       # save existing window dimensions so we can restore them later
-      @windows = []
-      (0..(::VIM::Window.count - 1)).each do |i|
-        @windows << OpenStruct.new(:index   => i,
-                                   :height  => ::VIM::Window[i].height,
-                                   :width   => ::VIM::Window[i].width)
+      @windows = (0..(::VIM::Window.count - 1)).map do |i|
+        OpenStruct.new(
+          :index  => i,
+          :height => ::VIM::Window[i].height,
+          :width  => ::VIM::Window[i].width
+        )
       end
 
       set 'timeout', true        # ensure mappings timeout
@@ -54,6 +35,7 @@ module CommandT
       set 'equalalways', false   # don't auto-balance window sizes
       set 'timeoutlen', 0        # respond immediately to mappings
       set 'report', 9999         # don't show "X lines changed" reports
+      set 'scrolloff', 0         # don't scroll near buffer edges
       set 'sidescroll', 0        # don't sidescroll in jumps
       set 'sidescrolloff', 0     # don't sidescroll automatically
       set 'updatetime', options[:debounce_interval]
@@ -125,7 +107,6 @@ module CommandT
       ::VIM::command 'autocmd BufUnload <buffer> silent! ruby $command_t.unload'
 
       @has_focus  = false
-      @selection  = nil
       @abbrev     = ''
       @window     = $curwin
     end
@@ -179,32 +160,17 @@ module CommandT
     end
 
     def select_next
-      if @selection < @matches.length - 1
-        @selection += 1
-        print_match(@selection - 1) # redraw old selection (removes marker)
-        print_match(@selection)     # redraw new selection (adds marker)
-        move_cursor_to_selected_line
-      else
-        # (possibly) loop or scroll
-      end
+      @reverse_list ? _prev : _next
     end
 
     def select_prev
-      if @selection > 0
-        @selection -= 1
-        print_match(@selection + 1) # redraw old selection (removes marker)
-        print_match(@selection)     # redraw new selection (adds marker)
-        move_cursor_to_selected_line
-      else
-        # (possibly) loop or scroll
-      end
+      @reverse_list ? _next : _prev
     end
 
     def matches= matches
-      matches = matches.reverse if @reverse_list
       if matches != @matches
         @matches = matches
-        @selection = @reverse_list ? @matches.length - 1 : 0
+        @selection = 0
         print_matches
         move_cursor_to_selected_line
       end
@@ -228,7 +194,7 @@ module CommandT
       end
     end
 
-    def find char
+    def find(char)
       # is this a new search or the continuation of a previous one?
       now = Time.now
       if @last_key_time.nil? or @last_key_time < (now - 0.5)
@@ -239,10 +205,11 @@ module CommandT
       @last_key_time = now
 
       # see if there's anything up ahead that matches
-      @matches.each_with_index do |match, idx|
+      matches = @reverse_list ? @matches.reverse : @matches
+      matches.each_with_index do |match, idx|
         if match[0, @find_string.length].casecmp(@find_string) == 0
           old_selection = @selection
-          @selection = idx
+          @selection = @reverse_list ? matches.length - idx - 1 : idx
           print_match(old_selection)  # redraw old selection (removes marker)
           print_match(@selection)     # redraw new selection (adds marker)
           break
@@ -261,6 +228,30 @@ module CommandT
 
   private
 
+    def _next
+      if @selection < [@window.height, @matches.length].min - 1
+        @selection += 1
+        print_match(@selection - 1) # redraw old selection (removes marker)
+        print_match(@selection)     # redraw new selection (adds marker)
+        move_cursor_to_selected_line
+      end
+    end
+
+    def _prev
+      if @selection > 0
+        @selection -= 1
+        print_match(@selection + 1) # redraw old selection (removes marker)
+        print_match(@selection)     # redraw new selection (adds marker)
+        move_cursor_to_selected_line
+      end
+    end
+
+    # Translate from a 0-indexed match index to a 1-indexed Vim line number.
+    # Also takes into account reversed listings.
+    def line(match_index)
+      @reverse_list ? @window.height - match_index : match_index + 1
+    end
+
     def set(setting, value)
       @settings ||= Settings.new
       @settings.set(setting, value)
@@ -270,14 +261,14 @@ module CommandT
       # on some non-GUI terminals, the cursor doesn't hide properly
       # so we move the cursor to prevent it from blinking away in the
       # upper-left corner in a distracting fashion
-      @window.cursor = [@selection + 1, 0]
+      @window.cursor = [line(@selection), 0]
     end
 
     def print_error msg
       return unless VIM::Window.select(@window)
       unlock
       clear
-      @window.height = @min_height > 0 ? @min_height : 1
+      @window.height = [1, @min_height].min
       @@buffer[1] = "-- #{msg} --"
       lock
     end
@@ -340,11 +331,15 @@ module CommandT
     end
 
     # Print just the specified match.
-    def print_match idx
+    def print_match(idx)
       return unless VIM::Window.select(@window)
       unlock
-      @@buffer[idx + 1] = match_text_for_idx idx
+      @@buffer[line(idx)] = match_text_for_idx idx
       lock
+    end
+
+    def max_lines
+      [1, VIM::Screen.lines - 5].max
     end
 
     # Print all matches.
@@ -356,19 +351,20 @@ module CommandT
         return unless VIM::Window.select(@window)
         unlock
         clear
-        actual_lines = 1
         @window_width = @window.width # update cached value
-        max_lines = VIM::Screen.lines - 5
-        max_lines = 1 if max_lines < 0
-        actual_lines = match_count < @min_height ? @min_height : match_count
-        actual_lines = max_lines if actual_lines > max_lines
-        @window.height = actual_lines
-        (1..actual_lines).each do |line|
-          idx = line - 1
-          if @@buffer.count >= line
-            @@buffer[line] = match_text_for_idx idx
+        desired_lines = [match_count, @min_height].max
+        desired_lines = [max_lines, desired_lines].min
+        @window.height = desired_lines
+        matches = []
+        (0...@window.height).each do |idx|
+          text = match_text_for_idx(idx)
+          @reverse_list ? matches.unshift(text) : matches.push(text)
+        end
+        matches.each_with_index do |match, idx|
+          if @@buffer.count > idx
+            @@buffer[idx + 1] = match
           else
-            @@buffer.append line - 1, match_text_for_idx(idx)
+            @@buffer.append(idx, match)
           end
         end
         lock
