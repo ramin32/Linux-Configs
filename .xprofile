@@ -5,7 +5,7 @@ xrdb ~/.Xdefaults
 setxkbmap -option caps:none
 source ~/.profile
 feh --bg-scale ~/.background.jpg
-xsef +fp /usr/share/fonts/X11/misc
+xset +fp /usr/share/fonts/X11/misc
 xset fp rehash
 xscreensaver -no-splash &
 compton &
