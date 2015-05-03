@@ -6,6 +6,9 @@ require("naughty")
 require("debian.menu")
 
 
+terminal = "gnome-terminal"
+browser = "firefox"
+
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -24,9 +27,9 @@ do
         in_error = false
     end)
 end
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/ramin/.config/awesome/theme.lua")
 
-terminal = "urxvt"
+
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -177,8 +180,7 @@ globalkeys = awful.util.table.join(
             end
         end),
     awful.key({ modkey,           }, "z", function () awful.util.spawn(terminal) end),
-    --awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome --proxy-server=socks5://localhost:12345') end),
-    awful.key({ modkey,           }, "x", function () awful.util.spawn('google-chrome') end),
+    awful.key({ modkey,           }, "x", function () awful.util.spawn(browser) end),
     awful.key({ modkey,    }, "p", function () awful.util.spawn('nautilus --no-desktop') end),
     awful.key({ modkey, "Shift"   }, "p", function () awful.util.spawn('sudo poweroff') end),
     awful.key({ modkey, "Shift"   }, "z", function () awful.util.spawn('slock') end),
@@ -264,13 +266,17 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 
 awful.rules.rules = {
+
+    { rule = {instance='exe'}, properties = {floating = true}},
+    { rule = {instance='plugin-container'}, properties = {floating = true}},
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = true,
                      size_hints_honor = false,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons } 
+    },
 
     { rule_any = { class = {"plugin-container"} },
       properties = { floating = true, focus=true } },
