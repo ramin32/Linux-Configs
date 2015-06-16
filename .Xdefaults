@@ -23,10 +23,7 @@ URxvt*scrollBar: false
 URxvt.scrollBar: false
 URxvt.loginShell: true
 URxvt.urgentOnBell: true
-URxvt.urlLauncher: /usr/bin/chromium-browser
-URxvt.matcher.button: 1
 URxvt.tripleclickwords: true
-URxvt.perl-ext-common: default,matcher
 
 xterm*background:black
 xterm*foreground:gray60

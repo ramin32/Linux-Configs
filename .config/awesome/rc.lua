@@ -6,8 +6,8 @@ require("naughty")
 require("debian.menu")
 
 
-terminal = "gnome-terminal"
-browser = "firefox"
+terminal = "urxvt"
+browser = "chromium-browser"
 
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,

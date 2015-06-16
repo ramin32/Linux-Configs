@@ -7,7 +7,7 @@ filetype plugin indent on
 set et
 set sts=4
 set sw=4
-set ts=8
+set ts=4
 set makeprg=ant\ -emacs
 au CursorHold * update
 au CursorHoldI * update
@@ -28,3 +28,4 @@ let NERDTreeIgnore = ['\.pyc$']
 set backspace=2
 set autoread
 setlocal spell spelllang=en_us
+call pathogen#infect()
