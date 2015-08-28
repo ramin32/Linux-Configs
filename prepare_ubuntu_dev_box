@@ -1,0 +1,17 @@
+sudo apt-get install build-essential
+sudo apt-get install gcc
+sudo apt-get install libffi
+sudo apt-get install libffi-dev
+sudo apt-get install libxml-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install libxslt1-dev 
+sudo apt-get install postgresql-client
+sudo apt-get install postgresql-server-dev
+sudo apt-get install postgresql-server-dev-9.3
+sudo apt-get install python-dev vim-nox
+sudo apt-get install python-devel vim-box
+sudo apt-get install python-devel vim-nox
+sudo apt-get install python-virtualenv
+sudo apt-get install vim git
+sudo apt-get install vim-nox
+sudo apt-get install zsh
