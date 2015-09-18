@@ -19,7 +19,7 @@ fi
 #exec startkde
 #exec gnome-session
 
-xrandr --output DVI-I-1  --output DVI-D-1 --left-of DVI-I-1 &
+xrandr --output DVI-I-1  --output DVI-D-1 --right-of DVI-I-1 &
 chromium-browser &
 urxvt &
 exec awesome 
