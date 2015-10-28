@@ -8,7 +8,8 @@
     l = log
     p = push origin master
 [log]
+      date = format:%a %m/%d/%y %I:%M %p  
 [format]
-      pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+      pretty = format:%h %Cblue%ad%Creset %Cgreen%s%Creset
 [push]
 	default = simple

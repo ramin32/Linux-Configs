@@ -1,6 +1,7 @@
 set nocompatible
 set nu
 set mouse=a
+call pathogen#infect()
 syntax on
 filetype on
 filetype plugin indent on
@@ -28,7 +29,6 @@ let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 set backspace=2
 set autoread
 setlocal spell spelllang=en_us
-call pathogen#infect()
 let g:jsx_ext_required = 0
 let g:CommandTTraverseSCM="pwd"
 
