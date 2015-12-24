@@ -15,7 +15,7 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
-~/.xprofile 
+~/.xprofile &
 #exec startkde
 #exec gnome-session
 

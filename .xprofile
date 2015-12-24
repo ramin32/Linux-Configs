@@ -1,13 +1,11 @@
-xset s 600 
-xset -b 
-xrdb ~/.Xdefaults 
-setxkbmap -option caps:none
-source ~/.profile
-feh --bg-scale ~/.background.jpg
-xset +fp /usr/share/fonts/X11/misc
-xset fp rehash
+xset s 600 & 
+xset -b &
+xrdb ~/.Xdefaults &
+setxkbmap -option caps:none &
+source ~/.profile &
+feh --bg-scale ~/.background.jpg &
+xset +fp /usr/share/fonts/X11/misc &
+xset fp rehash &
 xscreensaver -no-splash &
 compton &
-
-xrandr --output DVI-I-1  --output DVI-D-1 --right-of DVI-I-1 &
-
+xrandr --output DVI-I-1  --output DVI-D-1 --right-of DVI-I-1  &
