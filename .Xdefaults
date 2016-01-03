@@ -1,6 +1,6 @@
 URxvt*background:black
 URxvt*foreground:gray60
-URxvt*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+URxvt*font:-*-terminus-bold-*-*-*-18-*-*-*-*-*-*-*
 URxvt*metaSendsEscape:true
 URxvt*color0:      #000000
 URxvt*color1:      #9e1828
@@ -27,7 +27,7 @@ URxvt.tripleclickwords: true
 
 xterm*background:black
 xterm*foreground:gray60
-xterm*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+xterm*font:-*-terminus-bold-*-*-*-18-*-*-*-*-*-*-*
 xterm*metaSendsEscape:true
 xterm*color0:      #000000
 xterm*color1:      #9e1828
