@@ -84,3 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #0
 alias battery="upower -i $(upower -e | grep 'BAT') | grep -E 'state|to\ full|percentage'"
+export VISUAL=vim
+export EDITOR="$VISUAL"
+

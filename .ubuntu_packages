@@ -30,3 +30,5 @@ virtual-env
 virtual-env
 xscreensaver
 zsh 
+libxml2-dev
+libxslt1-dev 
