@@ -1,8 +1,6 @@
 autocutsel
 awesome
 build-essential
-chromium-browser
-chromium-codecs-ffmpeg-extra
 fabric
 feh
 flashplugin-downloader
@@ -36,8 +34,6 @@ tig
 vim-nox
 xclip
 xfonts-terminus
-xmobar
-xmonad
 xscreensaver
 xterm
 zsh
