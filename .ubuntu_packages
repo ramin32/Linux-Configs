@@ -23,6 +23,8 @@ python-dev
 python-pip
 python-virtualenv
 rtorrent
+ruby
+ruby-dev
 rxvt-unicode
 screen
 scrot
