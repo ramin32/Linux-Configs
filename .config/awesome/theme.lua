@@ -12,7 +12,7 @@ theme = {}
 -- }}}
 
 -- {{{ Styles
-theme.font      = "terminus bold 14"
+theme.font      = "terminus bold 12"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
