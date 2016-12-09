@@ -7,7 +7,7 @@ require("debian.menu")
 
 
 terminal = "urxvt"
-browser = "opera --new-window"
+browser = "google-chrome"
 
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
