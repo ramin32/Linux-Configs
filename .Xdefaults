@@ -1,6 +1,6 @@
 URxvt*background:black
 URxvt*foreground:gray60
-URxvt*font:-*-terminus-bold-*-*-*-18-*-*-*-*-*-*-*
+URxvt*font:-*-terminus-bold-*-*-*-22-*-*-*-*-*-*-*
 URxvt*metaSendsEscape:true
 URxvt*color0:      #000000
 URxvt*color1:      #9e1828
