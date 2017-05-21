@@ -281,6 +281,8 @@ awful.rules.rules = {
     { rule_any = { class = {"plugin-container"} },
       properties = { floating = true, focus=true } },
     { rule = { class='Opera'}, properties = {floating = false}},
+    { rule = { class='Google-chrome'}, properties = {floating = false}},
+    { rule = { class='google-chrome'}, properties = {floating = false}},
 }
 
 client.add_signal("manage", function (c, startup)
