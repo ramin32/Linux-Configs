@@ -39,3 +39,13 @@ xfonts-terminus
 xscreensaver
 xterm
 zsh
+i3
+gtk-chtheme 
+ruby-dev
+build-essential
+postgresql-server-dev-9.5
+libffi-dev
+libxml2-dev
+libxslt1-dev 
+python-dev
+vim-nox

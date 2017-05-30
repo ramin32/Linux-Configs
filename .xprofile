@@ -8,5 +8,4 @@ xset +fp /usr/share/fonts/X11/misc &
 xset fp rehash &
 xscreensaver -no-splash &
 compton &
-xrandr --output DVI-I-1  --output DVI-D-1 --right-of DVI-I-1  &
 nm-applet &
