@@ -24,3 +24,4 @@ set autoread
 setlocal spell spelllang=en_us
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.jpeg,*.o,*.obj,.git,ENV/**,node_modules/**,uploads/**,.*
 execute pathogen#infect()
+

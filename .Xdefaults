@@ -19,6 +19,7 @@ URxvt*color13:     #cf9ebe
 URxvt*color14:     #71bebe
 URxvt*color15:     #ffffff
 URxvt*scrollBar: false
+URxvt.borderless: false
 
 URxvt.scrollBar: false
 URxvt.loginShell: true
