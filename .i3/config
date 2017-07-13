@@ -29,6 +29,8 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+z exec i3-sensible-terminal
 bindsym $mod+z exec urxvt
+bindsym $mod+p exec nautilus --no-desktop
+bindsym $mod+Shift+z exec slock
 bindsym $mod+x exec google-chrome
 bindsym $mod+Shift+p exec sudo poweroff
 
@@ -73,7 +75,8 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
+bindsym $mod+f floating toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -81,7 +84,6 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -160,5 +162,3 @@ bar {
     status_command i3status -c ~/.i3/i3status.conf
     position top
 }
-
-new_window pixel 2

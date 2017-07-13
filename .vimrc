@@ -22,7 +22,6 @@ set hls
 set backspace=2
 set autoread
 setlocal spell spelllang=en_us
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.jpeg,*.o,*.obj,.git,ENV/**,node_modules/**,uploads/**,.*
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.jpeg,*.o,*.obj,.git,ENV/**,node_modules/**,uploads/**,.*,uploads,node_modules,uploads,ENV
 execute pathogen#infect()
-
 
