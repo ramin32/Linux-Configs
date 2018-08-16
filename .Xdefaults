@@ -1,6 +1,19 @@
 URxvt*background:black
 URxvt*foreground:gray60
-URxvt*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+URxvt*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*,\
+      xft:Symbola, \
+                                xft:Symbola:pixelsize=15, \
+                                xft:Symbola:pixelsize=14, \
+                                xft:Symbola:pixelsize=13, \
+                                xft:Symbola:pixelsize=12, \
+                                xft:Symbola:pixelsize=11, \
+                                xft:Symbola:pixelsize=10, \
+                                xft:Symbola:pixelsize=9, \
+                                xft:Symbola:pixelsize=8, \
+                                xft:Symbola:pixelsize=7, \
+                                xft:Symbola:pixelsize=6, \
+                                xft:Symbola:pixelsize=5, \
+                                xft:Symbola:pixelsize=4
 URxvt*metaSendsEscape:true
 URxvt*color0:      #000000
 URxvt*color1:      #9e1828

@@ -1,7 +1,2 @@
 *
-.
-.vimin*
-.vim/ruby
-*.pyc
-.vim/.netrwhist
-.vim/.netrwhist
+.*
