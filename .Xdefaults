@@ -68,6 +68,8 @@ xterm.urlLauncher: /usr/bin/chromium-browser
 xterm.matcher.button: 1
 xterm.tripleclickwords: true
 xterm.perl-ext-common: default,matcher
+URxvt.perl-ext-common:  resize-font
 
 Xcursor.theme: Vanilla-DMZ-AA
+
 
