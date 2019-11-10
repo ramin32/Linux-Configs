@@ -36,7 +36,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -64,6 +64,10 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  last-working-dir
+  npm
+  archlinux
+  wd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -100,3 +104,13 @@ source $ZSH/oh-my-zsh.sh
 
 
 export PATH=/home/ramin/.node/bin:$PATH
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/ramin/.node/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

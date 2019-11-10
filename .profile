@@ -20,3 +20,6 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/home/ramin/.gem/ruby/2.6.0/bin:$PATH"
+
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

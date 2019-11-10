@@ -1,5 +1,6 @@
 feh --bg-scale ~/.background.jpg &
 xscreensaver -no-splash &
 #nm-applet &
-compton --vsync opengl --dbe &
+compton -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil &
 alsactl --file ~/.config/asound.state restore
+nm-applet &
