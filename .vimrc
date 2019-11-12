@@ -1,9 +1,25 @@
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'wincent/command-t'
+Plugin 'dense-analysis/ale'
+Plugin 'valloric/matchtagalways'
+Plugin 'scrooloose/nerdtree'
+Plugin 'valloric/youcompleteme'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'ervandew/supertab'
+Plugin 'pangloss/vim-javascript'
+
+call vundle#end()
+filetype plugin indent on
+
 set nu
 set mouse=a
 syntax on
-filetype on
-filetype plugin indent on
 set et
 set sts=2
 set sw=2
@@ -25,6 +41,5 @@ set backspace=2
 set autoread
 setlocal spell spelllang=en_us
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.jpeg,*.o,*.obj,.git,ENV/**,node_modules/**,uploads/**,.*,uploads,node_modules,uploads,ENV
-execute pathogen#infect()
-autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2 expandtab
+
+
