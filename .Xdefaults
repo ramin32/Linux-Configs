@@ -1,19 +1,19 @@
 URxvt*background:black
 URxvt*foreground:gray60
-URxvt*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*,\
-      xft:Symbola, \
-                                xft:Symbola:pixelsize=15, \
-                                xft:Symbola:pixelsize=14, \
-                                xft:Symbola:pixelsize=13, \
-                                xft:Symbola:pixelsize=12, \
-                                xft:Symbola:pixelsize=11, \
-                                xft:Symbola:pixelsize=10, \
-                                xft:Symbola:pixelsize=9, \
-                                xft:Symbola:pixelsize=8, \
-                                xft:Symbola:pixelsize=7, \
-                                xft:Symbola:pixelsize=6, \
-                                xft:Symbola:pixelsize=5, \
-                                xft:Symbola:pixelsize=4
+URxvt*font:-*-terminus-bold-*-*-*-22-*-*-*-*-*-*-*,\
+  xft:Symbola, \
+  xft:Symbola:pixelsize=15, \
+  xft:Symbola:pixelsize=14, \
+  xft:Symbola:pixelsize=13, \
+  xft:Symbola:pixelsize=12, \
+  xft:Symbola:pixelsize=11, \
+  xft:Symbola:pixelsize=10, \
+  xft:Symbola:pixelsize=9, \
+  xft:Symbola:pixelsize=8, \
+  xft:Symbola:pixelsize=7, \
+  xft:Symbola:pixelsize=6, \
+  xft:Symbola:pixelsize=5, \
+  xft:Symbola:pixelsize=4
 URxvt*metaSendsEscape:true
 URxvt*color0:      #000000
 URxvt*color1:      #9e1828
@@ -39,35 +39,6 @@ URxvt.loginShell: true
 URxvt.urgentOnBell: true
 URxvt.tripleclickwords: true
 
-xterm*background:black
-xterm*foreground:gray60
-xterm*font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
-xterm*metaSendsEscape:true
-xterm*color0:      #000000
-xterm*color1:      #9e1828
-xterm*color2:      #aece92
-xterm*color3:      #968a38
-xterm*color4:      #414171
-xterm*color5:      #963c59
-xterm*color6:      #418179
-xterm*color7:      gray60
-xterm*color8:      #666666
-xterm*color9:      #cf6171
-xterm*color10:     #c5f779
-xterm*color11:     #fff796
-xterm*color12:     #4186be
-xterm*color13:     #cf9ebe
-xterm*color14:     #71bebe
-xterm*color15:     #ffffff
-xterm*scrollBar: false
-
-xterm.scrollBar: false
-xterm.loginShell: true
-xterm.urgentOnBell: true
-xterm.urlLauncher: /usr/bin/chromium-browser
-xterm.matcher.button: 1
-xterm.tripleclickwords: true
-xterm.perl-ext-common: default,matcher
 URxvt.perl-ext-common:  resize-font
 
 Xcursor.theme: Vanilla-DMZ-AA

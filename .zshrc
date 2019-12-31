@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-export PATH=/home/ramin/.node/bin:$PATH
+export PATH=/home/ramin/.node/node-v13.5.0-linux-x64/bin:$PATH
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
